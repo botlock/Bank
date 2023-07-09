@@ -1,29 +1,28 @@
-   {
-        "transactions":[
-            {
-                "id":1,
-                "description": "Desenvolvimento de site",
-                "type": "income",
-                "category":"Venda teste",
-                "price": 14000,
-                "createdAT":"2023-07-06T00:49:03.561Z"
-            },
-            {
-                "id":2,
-                "description": "Hamburguer",
-                "type": "outcome",
-                "category":"Alimentação",
-                "price": 50.00,
-                "createdAT":"2023-07-06T00:30:03.561Z"
-            },
-            {
-                "id":3,
-                "description": "Relógio",
-                "type": "outcome",
-                "category":"Acessórios",
-                "price": 100,
-                "createdAT":"2023-07-06T00:20:03.561Z"
-            }
-        ]
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda teste",
+      "price": 14000,
+      "createdAT": "2023-07-06T00:49:03.561Z"
+    },
+    {
+      "id": 2,
+      "description": "Hamburguer",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 50,
+      "createdAT": "2023-07-06T00:30:03.561Z"
+    },
+    {
+      "id": 3,
+      "description": "Relógio",
+      "type": "outcome",
+      "category": "Acessórios",
+      "price": 100,
+      "createdAT": "2023-07-06T00:20:03.561Z"
     }
-    
+  ]
+}

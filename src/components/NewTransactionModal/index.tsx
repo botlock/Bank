@@ -10,6 +10,8 @@ import {
 } from "./styles";
 import { X, ArrowCircleUp, ArrowCircleDown } from "phosphor-react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { TransactionsContext } from "../../contexts/TransactionsContexts";
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -20,20 +22,29 @@ const newTransactionFormSchema = z.object({
 type newTransactionsFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
+  const { createTransaction } = useContext(TransactionsContext);
+
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
     control,
+    reset,
   } = useForm<newTransactionsFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
     defaultValues: {
-      type: "income"
-    }
+      type: "income",
+    },
   });
   async function handleCreateNewTransition(data: newTransactionsFormInputs) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
+    const { description, type, category, price } = data;
+    await createTransaction({
+      description,
+      type,
+      category,
+      price,
+    });
+    reset();
   }
   return (
     <Dialog.Portal>
@@ -69,9 +80,8 @@ export function NewTransactionModal() {
             render={({ field }) => {
               return (
                 <TransactionType
-                onValueChange={field.onChange}
+                  onValueChange={field.onChange}
                   value={field.value}
-
                 >
                   <TransactionTypeButton variant="income" value="income">
                     <ArrowCircleUp size={24} />
