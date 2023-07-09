@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";
 import {
@@ -7,28 +7,10 @@ import {
   TransactionTable,
   PriceHighLight,
 } from "./styles";
+import { TransactionsContext } from "../../contexts/TransactionsContexts";
 
-interface Transaction {
-  id: number;
-  description: string;
-  type: "income" | "outcome";
-  price: number;
-  category: string;
-  createdAT: string;
-}
 export function TransactionPages() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  async function loadTransactions() {
-    const response = await fetch("http://localhost:3000/transactions");
-    const data = await response.json();
-
-    setTransactions(data);
-  }
-
-  useEffect(() => {
-    loadTransactions();
-  }, []);
+  const {transactions} = useContext(TransactionsContext);
 
   return (
     <div>
@@ -38,13 +20,13 @@ export function TransactionPages() {
         <SearchForm />
         <TransactionTable>
           <tbody>
-            {transactions.map(transaction => {
+            {transactions.map((transaction) => {
               return (
                 <tr key={transaction.id}>
                   <td width="50%">{transaction.description}</td>
                   <td>
                     <PriceHighLight variant={transaction.type}>
-                      {transaction.price}
+                    R${transaction.price}
                     </PriceHighLight>
                   </td>
 

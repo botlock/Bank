@@ -13,8 +13,16 @@
                 "description": "Hamburguer",
                 "type": "outcome",
                 "category":"Alimentação",
-                "price": 50,
+                "price": 50.00,
                 "createdAT":"2023-07-06T00:30:03.561Z"
+            },
+            {
+                "id":3,
+                "description": "Relógio",
+                "type": "outcome",
+                "category":"Acessórios",
+                "price": 100,
+                "createdAT":"2023-07-06T00:20:03.561Z"
             }
         ]
     }
